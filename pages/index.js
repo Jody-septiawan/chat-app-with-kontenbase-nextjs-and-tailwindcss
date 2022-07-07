@@ -1,6 +1,11 @@
+import { useState } from 'react';
+
 import Register from '../components/auth/Register';
+import Login from '../components/auth/Login';
 
 export default function Auth() {
+  const [isRegister, setIsRegister] = useState(false);
+
   return (
     <div className="bg-navy flex flex-col">
       <div
@@ -9,17 +14,27 @@ export default function Auth() {
       >
         <div className="left flex items-center">
           <div>
-            <div className="text-8xl	text-white font-bold mb-5">
+            <div
+              className="text-8xl	text-white font-bold mb-5"
+              data-aos="zoom-in"
+            >
               Connect <br /> to Another <br />
               <span className="text-orange">People</span>
             </div>
-            <img src="/image-1.png" alt="image-1" />
+            <img
+              src="/image-1.png"
+              alt="image-1"
+              data-aos="fade-up"
+              data-aos-duration="3000"
+            />
           </div>
         </div>
         <div className="right flex items-center justify-center">
-          <div className="card p-5 border-4 w-10/12	  rounded-2xl">
-            <Register />
-          </div>
+          {isRegister == true ? (
+            <Register setIsRegister={setIsRegister} />
+          ) : (
+            <Login setIsRegister={setIsRegister} />
+          )}
         </div>
       </div>
       <div
